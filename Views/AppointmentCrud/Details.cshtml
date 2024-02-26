@@ -1,0 +1,67 @@
+﻿@model MediSync.Models.Appointment
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Appointment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.appointmentDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.appointmentDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.appointmentCriticality)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.appointmentCriticality)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.appointmentReason)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.appointmentReason)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.appointmentStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.appointmentStatus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Patient.patientFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Patient.patientFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Physician.physicianFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Physician.physicianFirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.appointmentID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

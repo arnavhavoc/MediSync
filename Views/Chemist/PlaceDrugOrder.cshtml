@@ -1,0 +1,115 @@
+﻿@model MediSync.Models.POHeaderModel
+@{
+    ViewBag.Title = "PlaceDrugOrder";
+    Layout = "~/Views/Shared/_ChemistLayout.cshtml";
+}
+
+<h2>Place Drug Order</h2>
+
+<form action="@Url.Action("PlaceDrugOrder","Chemist")" method="post">
+    <div class="form-group align-content-center">
+        <label>Choose Supplier</label>
+        <select class="form-select" name="purchaseOrderSupplierID">
+            @foreach (var item in ViewBag.Supplier)
+            {
+                <option value="@item.supplierID">@item.supplierName</option>
+            }
+        </select>
+    </div>
+
+    <table class="table">
+
+        <thead>
+            <tr>
+                <th>
+                    Drug Name
+                </th>
+                <th>
+                    Quantity
+                </th>
+                <th>
+                    Note
+                </th>
+            </tr>
+        </thead>
+        <tbody id="tblPrdLineCnt">
+            <tr>
+                <td hidden>
+                    <input value="@ViewBag.ScheduleID" name="ScheduleID">
+                </td>
+                <td>
+                    @*@Html.DropDownList("DrugID", null, htmlAttributes: new { @class = "form-control", id = "rowCmbDrugID" })*@
+                    <input type="text" class="form-control" id="rowCmbDrugName" placeholder="Search Drug Name" list="drglist" name="purchaseOrderDrugID">
+                    <datalist id="drglist">
+                        @foreach (var item in ViewBag.Drugs)
+                        {
+                            <option value="@item.drugID">@item.drugName</option>
+                        }
+                    </datalist>
+                </td>
+                <td>
+                    @*@Html.EditorFor(model => model.POHeader.Note, new { htmlAttributes = new { @class = "form-control", id = "rowtxtQty" } })*@
+                    <input type="text" class="form-control" id="rowtxtQty" placeholder="Select Quantity" name="purchaseOrderQuantity">
+                </td>
+                <td>
+                    @*@Html.EditorFor(model => model.POHeader.Note, new { htmlAttributes = new { @class = "form-control", id = "rowtxtNote" } })*@
+                    <input type="text" class="form-control" id="rowtxtNote" placeholder="Add Note" name="purchaseOrderNote">
+                </td>
+                <td>
+                    <button id="btnSave" class="btn btn-primary">Add Drug</button>
+                    <button id="btnCancel" class="btn btn-secondary">Remove</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @*<input id="btnSavePO" type="submit" value="Create" class="btn btn-default" />*@
+                <button id="btnSavePO" class="btn btn-success" type="submit">Submit</button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+
+<script>
+    var ctr = 0
+    $(function () {
+        $("#btnSave").click(function (e) {
+            e.preventDefault()
+
+            ctr++
+            var row = `<tr row=${ctr} id="rw${ctr}" + drgid=${$("#rowCmbDrugName").val()} qty=${$("#rowtxtNote").val()} note="${$("#rowtxtNote").val()}">
+                <td>${$("#rowCmbDrugName").val()}
+                    <input type="hidden" name="POLines[${ctr - 1}].purchaseOrderDrugID" value="${$("#rowCmbDrugName").val()}" />
+                </td>
+                <td>${$("#rowtxtNote").val()}
+                    <input type="hidden" name="POLines[${ctr - 1}].purchaseOrderQuantity" value="${$("#rowtxtQty").val()}" />
+                </td>
+                <td>${$("#rowtxtNote").val()}
+                    <input type="hidden" name="POLines[${ctr - 1}].purchaseOrderNote" value="${$("#rowtxtNote").val()}" />
+                </td>
+                <td>
+                    <button class="btn btn-danger btnRemove" data-rowid="${ctr}">Remove</button>
+                </td>
+            </tr>`;
+            $("#tblPrdLineCnt").append(row);
+        });
+
+        $("#tblPrdLineCnt").on("click", ".btnRemove", function () {
+            var rowId = $(this).data("rowid");
+            $("#rw" + rowId).remove();
+        });
+
+        $("#btnCancel").click(function (e) {
+            alert("c");
+        });
+    });
+</script>

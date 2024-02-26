@@ -1,0 +1,46 @@
+﻿@model IEnumerable<MediSync.Models.ScheduleViewPhysicianModel>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_PhysicianLayout.cshtml";
+}
+
+<h2 class="text-center">Pending Schedules</h2>
+
+<div class="card shadow mb-5">
+    <table class="table table-striped table-hover text-center">
+        <thead>
+            <tr>
+                <th>Patient Name</th>
+                <th>Patient Age</th>
+                <th>Medical History</th>
+                <th>Appointment Reason</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var schedule in Model)
+            {
+                if (schedule.ScheduleStatus != "Examined")
+                {
+                    <tr>
+                        <td>@schedule.PatientName</td>
+                        <td>@schedule.PatientAge</td>
+                        <td>@schedule.PatientMedicalHistory</td>
+                        <td>@schedule.AppointmentReason</td>
+                        <td>
+                            @if (schedule.ScheduleStatus == "Pending")
+                            {
+                                <a href="~/Physician/AdvicePrescriptionForm?ScheduleID=@schedule.ScheduleID">
+                                    <button class="btn btn-primary" type="button">Examine</button>
+                                </a>
+                                
+                            }
+                        </td>
+                    </tr>
+                }
+
+            }
+        </tbody>
+    </table>
+</div>
+

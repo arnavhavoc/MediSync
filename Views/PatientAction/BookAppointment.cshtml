@@ -1,0 +1,48 @@
+﻿@{
+    MediSync.Models.CurrentUserModel currentUserModel = Session["CurrentUser"] as MediSync.Models.CurrentUserModel;
+}
+@{
+    ViewBag.Title = "BookAppointment";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<h2>BookAppointment</h2>
+<form action=@Url.Action("BookAppointment", "PatientAction") method="post">
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Patient ID</label>
+        <input readonly="readonly" type="text" class="form-control" id="formGroupExampleInput1" value="@currentUserModel.currentUserReferenceToId" name="appointmentPatientID">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Reason for Appointment</label>
+        <input type="text" class="form-control" id="formGroupExampleInput1" placeholder="Please enter reason for appointment" name="appointmentReason">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Appointment Date</label>
+        <input type="date" class="form-control" id="formGroupExampleInput2" name="appointmentDateTime">
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Select Physician</label>
+        <select type="text" class="form-select" id="formGroupExampleInput3" name="appointmentPhysicianID">
+            <option value="">Please Select</option>
+            @foreach (var item in ViewBag.Physician)
+            {
+                <option value="@item.physicianID">@item.physicianFirstName @item.physicianLastName, @item.physicianSpecialization</option>
+            }
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput2" class="form-label">Criticality</label>
+        <select type="text" class="form-select-lg" id="formGroupExampleInput4" name="appointmentCriticality">
+            <option value="">Please Select</option>
+            <option value="Regular">Regular</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Emergency">Emergency</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label for="formGroupExampleInput" class="form-label">Appointment Status</label>
+        <input readonly="readonly" type="text" class="form-control" id="formGroupExampleInput1" value="Pending" name="appointmentStatus">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+
+</form>

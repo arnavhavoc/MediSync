@@ -1,0 +1,79 @@
+﻿@model IEnumerable<MediSync.Models.Patient>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="text-lg-center">Patient Record</h1>
+
+<p>
+    <a href=@Url.Action("Create", "PatientCrud")><button type="button" class="btn btn-primary">Add New Patient</button></a>
+</p>
+
+<div class="card shadow mb-4">
+    <table class="table">
+        <tr>
+            <th>
+                Patient Name
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.patientDOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.patientGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.patientContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.patientEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.patientAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.patientMedicalHistory)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patientFirstName) @Html.DisplayFor(modelItem => item.patientLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patientDOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patientGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patientContact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patientEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patientAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.patientMedicalHistory)
+                </td>
+                <td>
+                    <a href="~/PatientCrud/Edit/@item.patientID">
+                        <button type="button" class="btn btn-success">Edit</button>
+                    </a>
+                    <a href="~/PatientCrud/Delete/@item.patientID">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+

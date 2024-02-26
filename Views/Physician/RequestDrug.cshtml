@@ -1,0 +1,38 @@
+﻿@model MediSync.Models.DrugRequest
+
+@{
+    ViewBag.Title = "RequestDrug";
+    Layout = "~/Views/Shared/_PhysicianLayout.cshtml";
+    MediSync.Models.CurrentUserModel currentUserModel = Session["CurrentUser"] as MediSync.Models.CurrentUserModel;
+}
+
+<h2>Request Drug</h2>
+
+@*<form action=@Url.Action("RequestDrug","Physician") method="post">
+    <div class="form-group" hidden>
+        <input type="email" class="form-control" name="drugRequestPhysicianID" value="@currentUserModel.currentUserReferenceToId">
+        <input type="email" class="form-control" name="drugRequestDate" value="@DateTime.Now.Date.ToString("dd-MM-yyyy")">
+        <input type="email" class="form-control" name="drugRequestStatus" value="Pending">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Please write Drug names and other details.</label>
+        <textarea class="form-control" name="drugRequestInfo" rows="3"></textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Submit</button>
+</form>*@
+
+<form action=@Url.Action("RequestDrug", "Physician") method="post">
+    <div class="form-group" hidden>
+        <input type="text" class="form-control" name="drugRequestPhysicianID" value="@currentUserModel.currentUserReferenceToId">
+        <input type="date" class="form-control" name="drugRequestDate" value="@DateTime.Now.Date.ToString("dd-MM-yyyy")">
+        <input type="text" class="form-control" name="drugRequestStatus" value="Pending">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Please write Drug names and other details.</label>
+        <textarea class="form-control" name="drugRequestInfo" rows="3"></textarea>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+</form>

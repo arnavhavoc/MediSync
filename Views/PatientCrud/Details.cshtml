@@ -1,0 +1,83 @@
+﻿@model MediSync.Models.Patient
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Patient</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.patientFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patientLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patientDOB)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientDOB)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patientGender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientGender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patientContact)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientContact)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patientEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patientAddress)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientAddress)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.patientMedicalHistory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.patientMedicalHistory)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.patientID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

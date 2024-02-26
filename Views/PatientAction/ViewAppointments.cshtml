@@ -1,0 +1,63 @@
+﻿@model IEnumerable<MediSync.Models.Appointment>
+
+@{
+    ViewBag.Title = "ViewAppointments";
+    Layout = "~/Views/Shared/_PatientLayout.cshtml";
+}
+
+<h2 class="text-md-center">View Appointments</h2>
+
+
+<table class="table">
+    <tr>
+            <th>
+                Appointment Date
+            </th>
+            <th>
+                Criticality
+            </th>
+            <th>
+                Reason
+            </th>
+            <th>
+                Appointment Status
+            </th>
+            <th>
+                Patient Name
+            </th>
+            <th>
+                Physician Name
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.appointmentDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.appointmentCriticality)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.appointmentReason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.appointmentStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Patient.patientFirstName) @Html.DisplayFor(modelItem => item.Patient.patientLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Physician.physicianFirstName) @Html.DisplayFor(modelItem => item.Physician.physicianLastName)
+            </td>
+            <td>
+                <a href="#">
+                    <button type="button" class="btn btn-primary">Download</button>
+                </a>
+            </td>
+        </tr>
+    }
+
+</table>

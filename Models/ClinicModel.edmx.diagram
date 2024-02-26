@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c0d1f2b022b7487ba1fcbf04f3a6c144" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="MediSyncModel.Appointment" Width="1.5" PointX="6" PointY="4.75" />
+        <EntityTypeShape EntityType="MediSyncModel.Chemist" Width="1.5" PointX="0.75" PointY="8.875" />
+        <EntityTypeShape EntityType="MediSyncModel.Drug" Width="1.5" PointX="10.5" PointY="1" />
+        <EntityTypeShape EntityType="MediSyncModel.DrugRequest" Width="1.5" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="MediSyncModel.Patient" Width="1.5" PointX="3.75" PointY="0.75" />
+        <EntityTypeShape EntityType="MediSyncModel.Physician" Width="1.5" PointX="0.75" PointY="4.5" />
+        <EntityTypeShape EntityType="MediSyncModel.PhysicianPrescription" Width="1.5" PointX="12.75" PointY="5.125" />
+        <EntityTypeShape EntityType="MediSyncModel.PurchaseOrderHeader" Width="1.5" PointX="10.5" PointY="10" />
+        <EntityTypeShape EntityType="MediSyncModel.PurchaseProductLine" Width="1.5" PointX="12.75" PointY="1" />
+        <EntityTypeShape EntityType="MediSyncModel.Schedule" Width="1.5" PointX="8.25" PointY="5.125" />
+        <EntityTypeShape EntityType="MediSyncModel.Supplier" Width="1.5" PointX="8.25" PointY="10" />
+        <EntityTypeShape EntityType="MediSyncModel.UserCred" Width="1.5" PointX="2.75" PointY="8.875" />
+        <AssociationConnector Association="MediSyncModel.FK__Appointme__appoi__2A4B4B5E" />
+        <AssociationConnector Association="MediSyncModel.FK__Appointme__appoi__2B3F6F97" />
+        <AssociationConnector Association="MediSyncModel.FK__Schedule__schedu__300424B4" />
+        <AssociationConnector Association="MediSyncModel.FK__Physician__Physi__59FA5E80" />
+        <AssociationConnector Association="MediSyncModel.FK__PurchaseP__purch__5FB337D6" />
+        <AssociationConnector Association="MediSyncModel.FK__DrugReque__drugR__619B8048" />
+        <AssociationConnector Association="MediSyncModel.FK__PurchaseO__purch__5CD6CB2B" />
+        <AssociationConnector Association="MediSyncModel.FK__PurchaseP__purch__60A75C0F" />
+        <EntityTypeShape EntityType="MediSyncModel.PhysicianAdvice" Width="1.5" PointX="10.5" PointY="5.25" />
+        <AssociationConnector Association="MediSyncModel.FK__Physician__Physi__3B75D760" />
+        <AssociationConnector Association="MediSyncModel.FK__Physician__Physi__59063A47" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

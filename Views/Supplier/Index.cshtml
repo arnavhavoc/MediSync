@@ -1,0 +1,39 @@
+﻿@model IEnumerable<MediSync.Models.PurchaseOrderHeader>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_SupplierLayout.cshtml";
+}
+
+<h2 class="text-center">Purchase Orders</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Purchase Order DATE
+        </th>
+        <th>
+            Supplier Name
+        </th>
+        <th>
+            Purchase Order Note
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.purchaseOrderDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Supplier.supplierName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PurchaseProductLine.purchaseOrderNote)
+        </td>
+    </tr>
+}
+
+</table>

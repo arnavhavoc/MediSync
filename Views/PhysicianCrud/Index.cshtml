@@ -1,0 +1,96 @@
+﻿@model IEnumerable<MediSync.Models.Physician>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1 class="text-lg-center">Physician Record</h1>
+
+
+<p>
+    <a href=@Url.Action("Create", "PhysicianCrud")><button type="button" class="btn btn-primary">Add New Physician</button></a>
+</p>
+
+@*<p>
+    @Html.ActionLink("Create New", "Create")
+</p>*@
+
+<div class="card shadow mb-4">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.physicianFirstName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicianLastName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicianDOB)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicianSpecialization)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicianGender)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicianContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicianEmail)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicianAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.physicianDescription)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicianFirstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicianLastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicianDOB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicianSpecialization)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicianGender)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicianContact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicianEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicianAddress)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.physicianDescription)
+                </td>
+                <td>
+                    <a href="~/PhysicianCrud/Edit/@item.physicianID">
+                        <button type="button" class="btn btn-success">Edit</button>
+                    </a>
+                    <a href="~/PhysicianCrud/Delete/@item.physicianID">
+                        <button type="button" class="btn btn-danger">Delete</button>
+                    </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+
+    
